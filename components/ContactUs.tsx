@@ -25,7 +25,7 @@ const Contact = (props: Props) => {
       <div className="flex flex-col sm:p-40">
         <div className="grid grid-cols-2">
           {' '}
-          <PhoneIcon className="text-[#F7AB0A] h-7 animate-pulse w-1/2 text-left" />
+          <PhoneIcon className="text-[#F7AB0A] h-7 animate-pulse w-1/2" />
           <p className="text-sm">+918867671633</p>
         </div>
         <div className="grid grid-cols-2">

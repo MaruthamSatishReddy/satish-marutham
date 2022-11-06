@@ -5,18 +5,14 @@ import Link from 'next/link';
 import { ArrowUpCircleIcon } from '@heroicons/react/24/solid';
 import Header from '../components/Header';
 import { Experience, PageInfo, Skill, Project, Social } from '../typings';
-import { fetchProjects } from '../utils/fetchProjects';
-import { fetchSkills } from '../utils/fetchSkills';
-import { fetchSocials } from '../utils/fetchSocials';
-import { fetchexperiences } from '../utils/fetchExperiences';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import ContactUs from '../components/ContactUs';
 import WorkingExperience from '../components/WorkingExperience';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
-import { fetchPageInfo } from '../utils/fetchPageInfo';
-import Resume from '../components/Resume';
+import { sanityClient } from '../sanity';
+import { groq } from 'next-sanity';
 
 type Props = {
   pageInfo: PageInfo;
@@ -66,12 +62,26 @@ const Home = ({ pageInfo, socials, skills, projects, experiences }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const socials: Social[] = await fetchSocials();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const experiences: Experience[] = await fetchexperiences();
+  const pageInfoQuery = groq`
+*[_type=="pageInfo"][0]`;
+  const skillsQuery = groq`
+*[_type=="skill"]`;
+  const projectsQuery = groq`
+  *[_type=="project"]{
+    ...,technologies[] ->
+  }`;
+  const experienceQuery = groq`
+  *[_type =="experience"]{
+    ...,technologies[] ->
+  }`;
+  const socialQuery = groq`
+  *[_type=="social"]`;
 
+  const socials: Social[] = await sanityClient.fetch(socialQuery);
+  const skills: Skill[] = await sanityClient.fetch(skillsQuery);
+  const projects: Project[] = await sanityClient.fetch(projectsQuery);
+  const experiences: Experience[] = await sanityClient.fetch(experienceQuery);
+  const pageInfo: PageInfo = await sanityClient.fetch(pageInfoQuery);
   return {
     props: { pageInfo, socials, skills, projects, experiences },
     revalidate: 10,
