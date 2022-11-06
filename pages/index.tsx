@@ -16,6 +16,7 @@ import WorkingExperience from '../components/WorkingExperience';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import { fetchPageInfo } from '../utils/fetchPageInfo';
+import Resume from '../components/Resume';
 
 type Props = {
   pageInfo: PageInfo;
@@ -50,6 +51,7 @@ const Home = ({ pageInfo, socials, skills, projects, experiences }: Props) => {
       <section className="snap-start" id="contactus">
         <ContactUs />
       </section>
+
       <Link href="#hero">
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">

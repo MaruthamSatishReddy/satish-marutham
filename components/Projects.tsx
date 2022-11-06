@@ -35,11 +35,12 @@ function Projects({ projects }: Props) {
               key={project?._id}
             >
               {project.title}
+
               <img
                 key={project._id}
                 src={urlFor(project?.image).url()}
+                className="max-w-screen-sm"
                 alt=""
-                className="w-50 h-50"
               />
               <div className="space-y-10 px-0 md:px-10 max-w-6xl">
                 <p className="text-sm text-center md:text-left">

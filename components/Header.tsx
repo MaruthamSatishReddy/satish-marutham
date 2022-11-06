@@ -11,7 +11,7 @@ function Header({ socials }: Props) {
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}
         transition={{ duration: 1.5 }}
-        className="flex flex-row items-center"
+        className="flex flex-row items-center animate-bounce"
       >
         {socials.map((social) => {
           return (
