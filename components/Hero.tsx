@@ -11,7 +11,7 @@ type Props = {
 
 const Hero = ({ pageInfo }: Props) => {
   const [text, count] = useTypewriter({
-    words: [`Hi My Name is ${pageInfo.name}`],
+    words: [`Hello This is ${pageInfo.name} Hope doing Good!`],
     loop: true,
     delaySpeed: 2000,
   });
@@ -23,10 +23,10 @@ const Hero = ({ pageInfo }: Props) => {
         className="rounded-full w-40 h-40 object-cover"
       />
       <div className="z-20">
-        <h3 className="text-sm uppercase text-grey-500 pb-2 max-lg:pl-[9rem]">
+        <h3 className="text-sm uppercase text-grey-500 pb-2 text-center">
           {pageInfo?.role}
         </h3>
-        <h3 className="text-sm text-grey-500 pb-2 max-lg:pl-[9rem]">{text}</h3>
+        <h3 className="text-sm pb-2 text-center text-slate">{text}</h3>
         <div className="text-sm">
           <Link href="#about">
             <button className="heroButton">About</button>

@@ -8,8 +8,9 @@ type Props = { pageInfo: PageInfo };
 function About({ pageInfo }: Props) {
   return (
     <motion.div
-      initial={{ x: 0 }}
-      transition={{ duration: 1.2 }}
+      initial={{ x: -200 }}
+      whileInView={{ x: 0 }}
+      viewport={{ once: true }}
       className="flex flex-col relative h-screen text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly max-auto items-center"
     >
       <img

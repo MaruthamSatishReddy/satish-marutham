@@ -9,8 +9,9 @@ function Skill({ skill, directionLeft }: Props) {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.img
-        whileHover={{ scale: 1.2, rotate: 90 }}
-        whileTap={{ scale: 0.8, rotate: -90, borderRadius: '100%' }}
+        initial={{ x: directionLeft ? -200 : 200, opacity: 0 }}
+        transition={{ duration: 1.0 }}
+        whileInView={{ opacity: 1, x: 0 }}
         className="h-10 w-10 rounded-full border-gray-500 object-cover  xl:w-10 xl:h-10 filter group-hover:grayscale transition duration-300 ease-in-out"
         src={urlFor(skill?.image).url()}
         alt=""

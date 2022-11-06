@@ -22,13 +22,13 @@ function ExperienceCard({ experience }: Props) {
             return (
               <img
                 key={technology._id}
-                className="h-10 w-10 rounded-full"
-                //src={urlFor(technology?.image).url()}
+                src={urlFor(technology?.image).url()}
                 alt={technology.title}
+                className="h-10 w-10 rounded-full"
               />
             );
           })}
-          <p className="uppercase py-5 text-gray-300">
+          <p className="uppercase py-5 text-gray-400">
             {new Date(experience.dateStarted).toDateString()} -{' '}
             {experience.isCurrentlyWorkingHere
               ? 'Present'
